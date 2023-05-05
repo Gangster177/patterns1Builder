@@ -8,27 +8,31 @@ public class Person {
 
     public Person(PersonBuilder personBuilder) {
         name = personBuilder.name;
-        surname =personBuilder.surname;
+        surname = personBuilder.surname;
     }
 
-    public Person(String name, String surname, int age) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-    }
+//    public Person(String name, String surname, int age) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.age = age;
+//    }
+//
+//    public Person(String name, String surname, String address) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.address = address;
+//    }
+//
+//
+//    public Person(String name, String surname, int age, String address) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.age = age;
+//        this.address = address;
+//    }
 
-    public Person(String name, String surname, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-    }
-
-
-    public Person(String name, String surname, int age, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.address = address;
+    public PersonBuilder newChildBuilder() {
+        return new PersonBuilder().setSurname(this.surname).setAddress(this.address);
     }
 
     public boolean hasAge() {
@@ -74,7 +78,8 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Name: " + getName() + " surname: " + getSurname() + "\n age: ";
+       // return "Name: " + getName() + " surname: " + getSurname() + "\n age: ";
+        return getName() + " " +  getSurname();
     }
 
 //    @Override

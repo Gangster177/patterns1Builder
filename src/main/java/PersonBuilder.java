@@ -27,6 +27,9 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) {
+        if (age < 0 || age > 150){
+            throw new IllegalArgumentException("Age isn't allowed");
+        }
         this.age = age;
         return this;
     }
@@ -41,6 +44,9 @@ public class PersonBuilder {
 // Для этого нам нужно иметь частный конструктор в основном классе
 // с классом Builder в качестве аргумента.
     public Person build() {
+        if (this.name == null || this.surname == null){
+            throw new IllegalStateException("Person without name/surname can't exist");
+        }
         return new Person(this);
     }
 }
