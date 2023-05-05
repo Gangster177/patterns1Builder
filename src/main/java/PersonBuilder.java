@@ -8,14 +8,11 @@ public class PersonBuilder {
     protected int age;
     protected String address;
 
-    //Класс Builder должен иметь общедоступный конструктор со всеми необходимыми
-// полями в качестве параметров.
+    //Класс Builder должен иметь общедоступный конструктор
     public PersonBuilder() {
     }
 
-    //Класс Builder должен иметь методы для установки необязательных параметров,
-//и он должен возвращать тот же объект Builder после установки
-// необязательного поля.
+    //Класс Builder должен иметь методы для установки параметров
     public PersonBuilder setName(String name) {
         this.name = name;
         return this;
@@ -27,7 +24,7 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) {
-        if (age < 0 || age > 150){
+        if (age < 0 || age > 150) {
             throw new IllegalArgumentException("Age isn't allowed");
         }
         this.age = age;
@@ -41,10 +38,9 @@ public class PersonBuilder {
 
     //Последним шагом является предоставление метода build() в классе Builder,
 // который будет возвращать объект, необходимый клиентской программе.
-// Для этого нам нужно иметь частный конструктор в основном классе
-// с классом Builder в качестве аргумента.
+
     public Person build() {
-        if (this.name == null || this.surname == null){
+        if (this.name == null || this.surname == null) {
             throw new IllegalStateException("Person without name/surname can't exist");
         }
         return new Person(this);
