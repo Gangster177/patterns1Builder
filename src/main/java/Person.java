@@ -16,6 +16,30 @@ public class Person {
         this.address = personBuilder.address;
     }
 
+    public Person(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public Person(String name, String surname, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
+    public Person(String name, String surname, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+    }
+
+    public Person(String name, String surname, int age, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.address = address;
+    }
+
     public PersonBuilder newChildBuilder() {
         return new PersonBuilder().setSurname(this.surname).setAddress(this.address);
     }
