@@ -1,3 +1,5 @@
+package tasks1;
+
 import java.util.Objects;
 import java.util.OptionalInt;
 

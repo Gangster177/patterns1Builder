@@ -1,7 +1,9 @@
+package tasks1;
+
 //Создайте статический вложенный класс (static nested class) как класс
 // Builder, а затем скопируйте все поля из внешнего класса в класс Builder.
-// Мы должны следовать соглашению об именах, поэтому если имя класса Person,
-// то класс Builder должен называться как PersonBuilder.
+// Мы должны следовать соглашению об именах, поэтому если имя класса tasks1.Person,
+// то класс Builder должен называться как tasks1.PersonBuilder.
 public class PersonBuilder {
     protected String name;
     protected String surname;
@@ -41,7 +43,7 @@ public class PersonBuilder {
 
     public Person build() {
         if (this.name == null || this.surname == null) {
-            throw new IllegalStateException("Person without name/surname can't exist");
+            throw new IllegalStateException("tasks1.Person without name/surname can't exist");
         }
         return new Person(this);
     }
