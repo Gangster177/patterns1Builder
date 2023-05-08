@@ -1,13 +1,15 @@
 package tasks2;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logger {
     protected int num = 1;
 
-    public void log(String msg){
+    public void log(String msg) {
         Date date = new Date();
-        System.out.println("[" + date + " " + num++ + "] " + msg);
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
+        System.out.println("[" + formatDate.format(date) + " " + num++ + "] " + msg);
     }
 
     // В этом поле храним ссылку на тот
@@ -17,7 +19,8 @@ public class Logger {
 
     // Запрещаем пользователям пользоваться
     // конструктором нашего класса
-    private Logger() {}
+    private Logger() {
+    }
 
     // Пользователи, которым нужен объект
     // нашего класса, получают всегда один
@@ -26,7 +29,7 @@ public class Logger {
     // мы заполняем в этом методе если оно
     // до того не было заполнено
     public static Logger getInstance() {
-        if(logger == null) logger = new Logger();
+        if (logger == null) logger = new Logger();
         return logger;
     }
 }

@@ -1,30 +1,45 @@
 package tasks2;
 
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Logger logger = Logger.getInstance();
         logger.log("Запускаем программу");
         logger.log("Просим пользователя ввести входные данные для списка");
-        System.out.println("Введите размер списка:");
+        System.out.print("Введите размер списка: ");
+
         Scanner scanner = new Scanner(System.in);
         int longValue = scanner.nextInt();
-        System.out.println("Введите верхнюю границу для значений: ");
+        System.out.print("Введите верхнюю границу для значений: ");
         int maxValue = scanner.nextInt();
+
         logger.log("Создаём и наполняем список");
-        List<Integer> list =  new Random()
+
+        List<Integer> list = new Random()
                 .ints(0, maxValue)
                 .limit(longValue)
                 .boxed()
                 .toList();
-        System.out.println("Вот случайный список: " + list);
+        System.out.print("Вот случайный список: ");
+        list.forEach(value -> System.out.print(value + " "));
+        System.out.println();
+
         logger.log("Просим пользователя ввести входные данные для фильтрации");
-        System.out.println("Введите порог для фильтра:");
+        System.out.print("Введите порог для фильтра: ");
         int treshold = scanner.nextInt();
+
         logger.log("Запускаем фильтрацию");
+        Filter filter = new Filter(treshold);
+        var listByFilter = filter.filterOut(list);
+
+        logger.log("Прошло фильтр " + listByFilter.size() + " элемента из " + list.size());
+
+        logger.log("Выводим результат на экран");
+        System.out.print("Отфильтрованный список: ");
+        listByFilter.forEach(value -> System.out.print(value + " "));
+        System.out.println();
+
+        logger.log("Завершаем программу");
     }
 }
